@@ -1,0 +1,162 @@
+deduped_urls = set({})
+ 
+text_file = open(r"C:\GScraper\2015-08-03\Scrape\1million.txt", "r")
+ 
+for url in text_file:
+    deduped_urls.add(url.strip())
+     
+text_file.close()
+ 
+deduped_file = open(r"C:\GScraper\2015-08-03\Scrape\1million_deduped.txt", "w")
+ 
+for url in deduped_urls:
+    deduped_file.write(url.strip()+"\n")
+     
+deduped_file.close()
+
+______________________________________________
+
+import glob
+ 
+unique_urls = set({})
+ 
+multiple_files = glob.glob(r"C:\GScraper\2015-08-06\Scrape\*.txt")
+ 
+for file in multiple_files:
+    open_file = open(file, "r")
+    for url in open_file:
+        unique_urls.add(url.strip())
+    open_file.close()
+     
+deduped_file = open(r"C:\GScraper\2015-08-03\Scrape\random_files_deduped.txt", "w")
+ 
+for url in unique_urls:
+    deduped_file.write(url.strip()+"\n")
+     
+deduped_file.close()
+
+______________________________________________
+
+import tldextract
+ 
+deduped_urls = set({})
+unique_domains = set({})
+ 
+text_file = open(r"C:\GScraper\2015-08-03\Scrape\1million.txt", "r")
+ 
+for url in text_file:
+    domain = tldextract.extract(url.strip())
+    domain_only = domain.domain+"."+domain.suffix
+    if domain_only in unique_domains:
+        continue
+    else:
+        unique_domains.add(domain_only)
+        deduped_urls.add(url.strip())
+     
+text_file.close()
+ 
+deduped_file = open(r"C:\GScraper\2015-08-03\Scrape\1million_deduped.txt", "w")
+ 
+for url in deduped_urls:
+    deduped_file.write(url.strip()+"\n")
+     
+deduped_file.close()
+
+______________________________________________
+
+import glob
+import tldextract
+ 
+unique_urls = set({})
+unique_domains = set({})
+ 
+multiple_files = glob.glob(r"C:\GScraper\2015-08-03\Scrape\*.txt")
+ 
+for file in multiple_files:
+    open_file = open(file, "r")
+    for url in open_file:
+        domain = tldextract.extract(url.strip())
+        domain_only = domain.domain+"."+domain.suffix
+        if domain_only in unique_domains:
+            continue
+        else:
+            unique_domains.add(domain_only)
+            unique_urls.add(url.strip())
+    open_file.close()
+     
+deduped_file = open(r"C:\GScraper\2015-08-03\Scrape\1million_deduped.txt", "w")
+ 
+for url in unique_urls:
+    deduped_file.write(url.strip()+"\n")
+     
+deduped_file.close()
+
+______________________________________________
+
+
+first_scrape_set = set({})
+first_scrape_file = open(r"C:\GScraper\2015-08-03\Scrape\first_scrape.txt", "r")
+second_scrape_file = open(r"C:\GScraper\2015-08-03\Scrape\second_scrape.txt", "r")
+new_urls_file = open(r"C:\GScraper\2015-08-03\Scrape\only_new_urls.txt", "w")
+for url in first_scrape_file:
+    first_scrape_set.add(url.strip())
+for url in second_scrape_file:
+    if url.strip() in first_scrape_set:
+        continue
+    else:
+        new_urls_file.write(url.strip()+"\n")
+first_scrape_file.close()
+second_scrape_file.close()
+new_urls_file.close()
+
+______________________________________________
+
+import glob
+first_scrape_set = set({})
+first_scrape_file = open(r"C:\GScraper\2015-08-03\Scrape\first_scrape_demo.txt", "r")
+second_scrape_files = glob.glob(r"C:\GScraper\2015-08-03\Scrape\demo*.txt")
+new_urls_file = open(r"C:\GScraper\2015-08-03\Scrape\only_new_urls.txt", "w")
+for url in first_scrape_file:
+    first_scrape_set.add(url.strip())
+for file in second_scrape_files:
+    open_file = open(file, "r")
+    for url in open_file:
+        if url.strip() in first_scrape_set:
+            continue
+        else:
+            new_urls_file.write(url.strip()+"\n")
+first_scrape_file.close()
+# second_scrape_file.close()
+new_urls_file.close()
+
+import glob
+import tldextract
+ 
+verified_domains = set({})
+ 
+verified_files = glob.glob(r"C:\Users\Administrator\AppData\Roaming\GSA Search Engine Ranker\site_list-verify\*.txt")
+new_scrape = glob.glob(r"C:\GScraper\2015-08-03\Scrape\*.txt")
+ 
+for file in verified_files:
+    open_file = open(file, "r")
+    for url in open_file:
+        domain = tldextract.extract(url.strip())
+        domain_only = domain.domain+"."+domain.suffix
+        verified_domains.add(domain_only)
+    open_file.close()
+ 
+new_scrape_deduped = open(r"C:\GScraper\2015-08-03\Scrape\fresh_domains.txt", "w")
+     
+for file in new_scrape:
+    open_file = open(file, "r")
+    for url in open_file:
+        domain = tldextract.extract(url.strip())
+        domain_only = domain.domain+"."+domain.suffix
+        if domain_only in verified_domains:
+            continue
+        else:
+            verified_domains.add(domain_only)
+            new_scrape_deduped.write(url.strip()+"\n")
+    open_file.close()
+ 
+new_scrape_deduped.close()
