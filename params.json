@@ -1,0 +1,6 @@
+{
+  "name": "Seo-Scripts",
+  "tagline": "This is repo for any scripts related to automation of search engine related tasks for our company. ",
+  "body": "### SEO Scripts.\r\nThis is a collection of scripts in Bash, Python, Ubot script or god old Windows batch files. Don't expect anything new or revolutionary here as most of it has been begged, borrowed or stolen from elsewhere on the internet or from smarter people's brains.  These are some of the scripts that we find useful on regular basis and in the true spirit of the interwebs we  at[DanangDigital](http://www.danangdigital.net/) want to give something back. We'll be uploading the balance of files over the coming months. \r\n\r\n### GSA SER Scripts\r\nMost of these have been taken from Beck's nice page over at SerTips and were written in Python. And have saved a huge amount of work over the years. \r\n\r\n### Ubot Scripts \r\nThe Ubot scripts and scraps are more for reference than anything else and came from the Ubot forum.\r\n\r\n### Server Build Scripts \r\nThese have come in very handy over time and have been put together from numerous sources and a lot of time, trial and errors.\r\n\r\nFeel free to suggest changes modifications and improvements.\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
